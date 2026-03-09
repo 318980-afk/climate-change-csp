@@ -1,9 +1,9 @@
 def check_rep(pasw):
-    consec_count = 0
+    rep_count = 0
     for i in range(len(pasw)-1):
         if pasw[i] == pasw[i+1]:
-            consec_count+=1
-    if consec_count >= 3:
+            rep_count+=1
+    if rep_count >= 3:
         requirements.append("Password must not contain more than 3 repeated characters")
 
 print("Welcome to password checker! Here are the requirements for your password:")
