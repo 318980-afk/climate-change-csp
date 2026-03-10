@@ -52,7 +52,7 @@ while requirements:
         requirements.append("Password must be at least 8 characters long.")
 
     if has_upper and has_lower:
-        continue
+        print()
     else:
         requirements.append("Password must contain both upppercase and lowercase letters")
 
