@@ -31,6 +31,7 @@ print("- No more than 3 repeated characters in a row")
 print("- No more than 3 numbers increasing/decreasing in a row")
 
 requirements = ["placeholder"]
+check = True
 
 while requirements:
     requirements.clear()
@@ -39,6 +40,7 @@ while requirements:
 
     if password.upper() == "X":
         print("Thanks for using password checker. Goodbye!")
+        check = False
         break
 
     #generated using ai for bottom 5 lines
@@ -49,22 +51,16 @@ while requirements:
     has_special = any(ch in specials for ch in password)
 
     if len(password) < 8:
-        requirements.append("Password must be at least 8 characters long.")
+        requirements.append("Password must be at least 8 characters long")
 
-    if has_upper and has_lower:
-        print()
-    else:
-        requirements.append("Password must contain both upppercase and lowercase letters")
-
-    if has_number:
-        print()
-    else:
-        requirements.append("Password must contain at least one digit")
+    if not has_upper or not has_lower:
+        requirements.append("Password must contain both uppercase and lowercase letters")
     
-    if has_special:
-        print()
-    else:
+    if not has_special:
         requirements.append("Password must contain at least one special character")
+
+    if not has_number:
+        requirements.append("Password must contain at least one digit")
 
     if check_rep(password):
         requirements.append(check_rep(password))
@@ -77,4 +73,5 @@ while requirements:
             print(i)
     print("(Enter X to exit)")
 
-print("Congratulations, your password is secure!")
+if check:
+    print("Congratulations, your password is secure!")
