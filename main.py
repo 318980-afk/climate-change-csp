@@ -1,17 +1,26 @@
+#Me and my partner made the entire code together
+
+#function to check for repeated characters in a row
+#only flags if more than three identical characters appear consecutively
 def check_rep(pasw):
-    rep_count = 0
-    for i in range(len(pasw)-1):
-        if pasw[i] == pasw[i+1]:
-            rep_count+=1
-    if rep_count >= 3:
-        return "Password must not contain more than 3 repeated characters"
+    if not pasw:
+        return None
+    curr_reps = 1
+    for i in range(1, len(pasw)):
+        if pasw[i] == pasw[i-1]:
+            curr_reps += 1
+            if curr_reps > 3:
+                return "Password must not contain more than 3 repeated characters in a row"
+        else:
+            curr_reps = 1
     return None
 
+#function to check for increasing/decreasing numbers
 def check_inc_dec(pasw):
     inc_count = 0
     dec_count = 0
     for i in range(len(pasw)-1):
-        if pasw[i].isdigit() and pasw[i+1].isdigit():
+        if pasw[i].isdigit() and pasw[i+1].isdigit(): #checking if they are numbers first
             if int(pasw[i]) + 1 == int(pasw[i+1]):
                 inc_count+=1
             elif int(pasw[i]) - 1 == int(pasw[i+1]):
